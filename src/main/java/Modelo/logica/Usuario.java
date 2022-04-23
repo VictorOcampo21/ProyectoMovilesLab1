@@ -8,13 +8,19 @@ public class Usuario {
 
     private String id;
     private String clave;
+    private String rol;
 
     public Usuario() {
     }
 
-    public Usuario(String id, String clave) {
+    public Usuario(String id, String clave, String rol) {
         this.id = id;
         this.clave = clave;
+        this.rol = rol;
+    }
+    
+    public boolean correctPswd(String pass){
+        return pass.equals(this.getClave());
     }
 
     public String getId() {
@@ -31,6 +37,14 @@ public class Usuario {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
 }

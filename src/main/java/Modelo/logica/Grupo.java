@@ -10,16 +10,16 @@ import java.util.ArrayList;
 public class Grupo {
 
     private String nrc;
-    private String nomProfe;
+    private String idProfe;
     private int numGrup;
     private String curso;
     private String nomCiclo;
     private ArrayList<Estudiante> listEstu;
     private ArrayList<Horario> listHorario;
 
-    public Grupo(String nrc, String nomProfe, int numGrup, String curso, String nomCiclo, ArrayList<Estudiante> listEstu, ArrayList<Horario> listHorario) {
+    public Grupo(String nrc, String idProfe, int numGrup, String curso, String nomCiclo, ArrayList<Estudiante> listEstu, ArrayList<Horario> listHorario) {
         this.nrc = nrc;
-        this.nomProfe = nomProfe;
+        this.idProfe = idProfe;
         this.numGrup = numGrup;
         this.curso = curso;
         this.nomCiclo = nomCiclo;
@@ -38,12 +38,12 @@ public class Grupo {
         this.nrc = nrc;
     }
 
-    public String getNomProfe() {
-        return nomProfe;
+    public String getIdProfe() {
+        return idProfe;
     }
 
-    public void setNomProfe(String nomProfe) {
-        this.nomProfe = nomProfe;
+    public void setIdProfe(String idProfe) {
+        this.idProfe = idProfe;
     }
 
     public int getNumGrup() {

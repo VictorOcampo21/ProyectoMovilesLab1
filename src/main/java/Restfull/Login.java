@@ -1,9 +1,12 @@
-package Modelo.presentacion;
+package Restfull;
+
 
 import Modelo.logica.Universidad;
 import javax.annotation.security.PermitAll;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -17,22 +20,34 @@ import modelo.logica.Usuario;
  * @author Vic
  */
 
-@Path("/register")
+@Path("/login")
 @PermitAll
-public class RegistrarAdmin {
+public class Login {
     @Context
     HttpServletRequest request;
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)    
-    public void register(Usuario usuario) {  
+    public Usuario login(Usuario usuario) {  
+
+            
             try {
-                if(usuario == null) throw new Exception("Usuario no creado");
-                Universidad.getInstance().agregarUsuario(usuario.getId(), usuario.getClave(), "ADM");
-                System.out.println(usuario);
+                Usuario logged = Universidad.getInstance().validarUsu(usuario.getId(), usuario.getClave());
+                request.getSession(true).setAttribute("user", logged);
+                return logged;
             } catch (Exception ex) {
                 System.out.println(ex);
                 throw new NotFoundException();
+                
             }  
     }
+    
+    @DELETE 
+    public void logout() {  
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("user");           
+        session.invalidate();
+    }
+    
 }

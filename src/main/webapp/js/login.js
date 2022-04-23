@@ -1,60 +1,114 @@
 var url="http://localhost:8080/ProyectoMovilesLab1/";
 
-    function login(){
-        if (!loginValidar()) return;
-        usuario = {
-            id: $("#id").val(),
-            pass: $("#pass").val()
-        };       
-        let request = new Request(url+'api/login', {method: 'POST', headers: { 'Content-Type': 'application/json'},body: JSON.stringify(usuario)});
-        (async ()=>{
-            const response = await fetch(request);
-            if (!response.ok) {errorMessage(response.status,$("#loginDialog #errorDiv"));return;}
-            usuario = await response.json();
-            sessionStorage.setItem('user', JSON.stringify(usuario));
-            $('#loginDialog').modal('hide');
-               document.location = url+"loadMovies";                         
-        })(); 
+function loginValidar() {
+    var error = false;
+    $("#logInForm input").removeClass("invalid");
+
+    error |= $("#logInForm input[type='text']").filter((i, e) => {
+        return e.value === '';
+    }).length > 0;
+
+    $("#logInForm input[type='text']").filter((i, e) => {
+        return e.value === '';
+    }).addClass("invalid");
+
+    error |= $("#logInForm input[type='password']").filter((i, e) => {
+        return e.value === '';
+    }).length > 0;
+
+    $("#logInForm input[type='password']").filter((i, e) => {
+        return e.value === '';
+    }).addClass("invalid");
+    var x = $("#logInId").val();
+    error |= isNaN(x);
+    if (isNaN(x)) {
+        $("#logInId").addClass("invalid");
+        $("#logInModal #errorDivId").show();
+        $("#pErrorId").text("Identificacion debe ser numerica");
     }
+    return !error;
+}
 
-    function loginValidar(){
-        $("#loginForm").addClass("was-validated");
-        return $("#loginForm").get(0).checkValidity(); 
+function login() {
+    if (!loginValidar())
+        return;
+    usuario = {
+        id: $("#logInId").val(),
+        password: $("#logInPassword").val(),
+        role: "unknown"
+    };
+
+    let request = new Request(url + 'api/login', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(usuario)});
+    (async () => {
+        const response = await fetch(request);
+        if (!response.ok) {
+            errorMessageLogin(response.status);//-----------------------
+            console.log("Error login");
+            return;
+        }
+        usuario = await response.json();
+        sessionStorage.setItem('user', JSON.stringify(usuario));
+        $('#loginDialog').modal('close');
+        document.location = url;
+    })();
+}
+
+function logout() {
+    let request = new Request(url + 'api/login', {method: 'DELETE', headers: {}});
+    (async () => {
+        const response = await fetch(request);
+        if (!response.ok) {
+            errorMessageLogin(response.status);
+            return;
+        }
+        sessionStorage.removeItem('user');
+        document.location = url;
+    })();
+    return false;
+}
+
+function errorMessageLogin(status) {
+    let error;
+    switch (status) {
+        case 404:
+            error = "Contraseña incorrecta";
+            break;
+        case 403:
+        case 405:
+            error = "Usuario no autorizado";
+            break;
+        case 406:
+        case 405:
+        case 500:
+            error = "Usuario no existe";
+            break;
     }
+    if (error === "" || error === null) {
+        $("#logInModal #errorDivId").hide();
+        $("#logInModal #errorDivPass").hide();
 
-    function logout(){
-        let request = new Request(url+'api/login', {method: 'DELETE', headers: { }});
-        (async ()=>{
-            const response = await fetch(request);
-            if (!response.ok) {errorMessage(response.status,$("#loginDialog #errorDiv"));return;}
-            sessionStorage.removeItem('user');
-            document.location = url+"loadMovies";                         
-        })();          
+    } else {
+        if (error === "Usuario no existe" || error === "Usuario no autorizado") {
+            $("#logInId").addClass("invalid");
+            $("#logInModal #errorDivId").show();
+            $("#pErrorId").text(error);
+            $("#logInModal #errorDivPass").hide();
+        }
+        if (error === "Contraseña incorrecta") {
+            $("#logInModal #errorDivId").hide();
+            $("#logInPassword").addClass("invalid");
+            $("#logInModal #errorDivPass").show();
+            $("#pErrorPass").text(error);
+        }
+
     }
+    return;
+}
 
-  function errorMessage(status,place){  
-        switch(status){
-            case 404: error= "Registro no encontrado"; break;
-            case 403: case 405: error="Usuario no autorizado"; break;
-            case 406: case 405: error="Usuario ya existe"; break;
-        };            
-        place.html('<div class="alert alert-danger fade show">' +
-        '<button type="button" class="close" data-dismiss="alert">' +
-        '&times;</button><h4 class="alert-heading">Error!</h4>'+error+'</div>');
-        return;        
-    }  
-  
-  function loadLogin(){
-        let request = new Request(url+'login.jsp', {method: 'GET'});
-        (async ()=>{
-            const response = await fetch(request);
-            if (!response.ok) {errorMessage(response.status,$("#loginDialog #errorDiv"));return;}
-            content = await response.text();
-            $('body').append(content); 
-            $("#login").click(login);
-            $("#logout").click(logout);                          
-        })();     
-  }
-  
-  $(loadLogin);
+function loadAccountListeners() {
+    $("#loginBtn").click(login);
+    $(document).on('click', '#navLogout', logout);
+    $(document).on('click', '#footerLogout', logout);
+}
 
+$(loadAccountListeners);

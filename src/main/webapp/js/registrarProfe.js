@@ -71,7 +71,7 @@ function renderRegister() {
     $("#registerTeacherId").val(usuario.id);
     $("#registerTeacherName").val("");
     $("#registerTeacherPassword").val(usuario.password);
-    $('#registerBtn').on('click', addUser);
+    $('#registerTeacherBtn').on('click', addUser);
 }
 
 

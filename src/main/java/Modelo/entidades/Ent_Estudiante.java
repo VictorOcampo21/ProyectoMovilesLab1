@@ -1,10 +1,19 @@
-package modelo.logica;
+package Modelo.entidades;
 
-/**
- *
- * @author Vic
- */
-public class Estudiante {
+public class Ent_Estudiante {
+
+    public Ent_Estudiante() {
+    }
+
+    public Ent_Estudiante(String id, String nombre, String telefono, String email, String usu, String cumple, String carrera) {
+        this.id = id;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.email = email;
+        this.usu = usu;
+        this.cumple = cumple;
+        this.carrera = carrera;
+    }
 
     public String getCumple() {
         return cumple;
@@ -54,33 +63,19 @@ public class Estudiante {
         this.email = email;
     }
 
-    public Usuario getUsu() {
+    public String getUsu() {
         return usu;
     }
 
-    public void setUsu(Usuario usu) {
+    public void setUsu(String usu) {
         this.usu = usu;
     }
 
-    private String cumple;
-    private String carrera;
     private String id;
     private String nombre;
     private String telefono;
     private String email;
-    private Usuario usu;
-
-    public Estudiante() {
-    }
-
-    public Estudiante(String id, String nombre, String telefono, String email, Usuario usu, String cumple, String carrera) {
-        this.id = id;
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.email = email;
-        this.usu = usu;
-        this.cumple = cumple;
-        this.carrera = carrera;
-    }
-
+    private String usu;
+    private String cumple;
+    private String carrera;
 }

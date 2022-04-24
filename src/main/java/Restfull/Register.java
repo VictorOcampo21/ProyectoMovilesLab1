@@ -38,4 +38,37 @@ public class Register {
                 throw new NotFoundException();
             }  
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/student")
+    public void addStudent(Estudainte e) {
+        try {
+// No se como se llaman los metetodos del factory de estudiante pero la logica seria así
+            /*if (Ent_Estudiante_Factory.estudianteExiste(e.getId())) {
+                throw new Exception("Estudiante ya se encuentra registrado.");
+            }
+            Ent_Estudiante_Factory.agregarEstudiante(e);*/
+
+        } catch (Exception ex) {
+            throw new NotAcceptableException();
+        }
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/profesor")
+    public void addProfesor(Profesor e) {
+        try {
+// No se como se llaman los metetodos del factory de profesor pero la logica seria así, creo jajaja
+            /*if (Ent_Profesor_Factory.profesorExiste(e.getId())) {
+                throw new Exception("Profesor ya se encuentra registrado.");
+            }
+            Ent_Profesor_Factory.agregarProfesor(e);*/
+
+        } catch (Exception ex) {
+            throw new NotAcceptableException();
+        }
+    }
+
 }

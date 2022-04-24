@@ -18,6 +18,10 @@ public class Usuario {
         this.clave = clave;
         this.rol = rol;
     }
+
+    public Usuario(String id, String clave) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public boolean correctPswd(String pass){
         return pass.equals(this.getClave());

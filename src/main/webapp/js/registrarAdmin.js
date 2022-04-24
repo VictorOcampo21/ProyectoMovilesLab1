@@ -1,5 +1,4 @@
-var usuario = {id: "", password: "", role: "Cliente"};
-var cliente = {id: "", name: ""};
+var usuario = {id: "", password: "", role: "Administrador"};
 var url="http://localhost:8080/ProyectoMovilesLab1/";
 
 function validarRegister() {

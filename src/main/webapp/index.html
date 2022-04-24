@@ -24,9 +24,9 @@
                     <ul id="nav-mobile-left" class="left hide-on-med-and-down">
                         <li><a class="black-text" href="/ProyectoMovilesLab1/">Home</a></li>
                         <li><a class="grey-text text-darken-1 modal-trigger" href="#contactUsModal">Contact Us</a></li>
-                        <li><a class="grey-text text-darken-1 modal-trigger" id="navRegisterAdmin" href="#registerModal">Register Admin</a></li>
-                        <li><a class="grey-text text-darken-1 modal-trigger" id="navRegisterStudent" href="#registerModal">Register Student</a></li>
-                        <li><a class="grey-text text-darken-1 modal-trigger" id="navRegisterTeacher" href="#registerModal">Register Teacher</a></li>
+                        <li><a class="grey-text text-darken-1 modal-trigger" id="navRegisterAdmin" href="#registerAdminModal">Register Admin</a></li>
+                        <li><a class="grey-text text-darken-1 modal-trigger" id="navRegisterStudent" href="#registerStudentModal">Register Student</a></li>
+                        <li><a class="grey-text text-darken-1 modal-trigger" id="navRegisterTeacher" href="#registerTeacherModal">Register Teacher</a></li>
                         <li><a class="grey-text text-darken-1 modal-trigger" id="navLogin" href="#logInModal">Login</a></li>
                         <li><a class="grey-text text-darken-1 modal-trigger" id="navAccount" href="#">Account</a></li>
                         <li><a class="grey-text text-darken-1 modal-trigger" id="navLogout" href="#">Logout</a></li>
@@ -53,6 +53,218 @@
                 <p>VICTOR.OCAMPO.MARIN@est.una.ac.cr </p>
                 <p>JORSUA.GONZALEZ.SANCHEZ@est.una.ac.cr </p>
             </div>
+        </div>
+        
+        <!-- Register Admin PopUp -->
+        <div id="registerAdminModal" class="modal registerModal">
+            <div class='modal-content'>
+                <div class="row center-align">
+                    <span class="flow-text">Por favor ingrese sus datos</span>
+                </div>
+
+
+                <form id="registerAdminForm">
+                    <!-- Identificacion -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">account_circle</i>
+
+                            <input name="id" id="registerAdminId" type="text" class="validate">
+
+                            <label for="registerAdminId">Identificación</label>
+                        </div>
+                    </div>
+
+                    <div id="errorDivIdRegister" class="error-msg">
+                        <blockquote id="pErrorIdRegister"> </blockquote>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">lock</i>
+                            <input name="password" id="registerAdminPassword" type="password" class="validate">
+
+                            <label for="registerAdminPassword">Contraseña</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Boton -->
+                    <div class="row">
+                        <button class="btn waves-effect waves-light col s10 offset-s1" type="button" id="registerAdminBtn">Registrar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        
+        <!-- Register Student PopUp -->
+        <div id="registerStudentModal" class="modal registerModal">
+            <div class='modal-content'>
+                <div class="row center-align">
+                    <span class="flow-text">Por favor ingrese sus datos</span>
+                </div>
+
+
+                <form id="registerStudentForm">
+                    <!-- Identificacion -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">account_circle</i>
+
+                            <input name="id" id="registerStudentId" type="text" class="validate">
+
+                            <label for="registerStudentId">Identificación</label>
+                        </div>
+                    </div>
+                    <!-- Nombre completo -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">face</i>
+                            <input name="name" id="registerStudentName" type="text" class="validate">
+                            <label for="registerStudentName">Nombre Completo</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Telefono completo -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">face</i>
+                            <input name="telefono" id="registerStudentTelefono" type="text" class="validate">
+                            <label for="registerStudentTelefono">Telefono Completo</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Email completo -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">face</i>
+                            <input name="email" id="registerStudentEmail" type="text" class="validate">
+                            <label for="registerStudentEmail">Email Completo</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Cumpleaños completo -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">face</i>
+                            <input name="age" id="registerStudentAge" type="text" class="validate">
+                            <label for="registerStudentAge">Digite de forma númerica el cumpleaños(dd/mm/yyyy)</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Carrera completo -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">face</i>
+                            <input name="carrera" id="registerStudentCarrera" type="text" class="validate">
+                            <label for="registerStudentCarrera">Carrera Completo</label>
+                        </div>
+                    </div>
+
+                    <div id="errorDivIdRegister" class="error-msg">
+                        <blockquote id="pErrorIdRegister"> </blockquote>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">lock</i>
+                            <input name="password" id="registerStudentPassword" type="password" class="validate">
+
+                            <label for="registerStudentPassword">Contraseña</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Boton -->
+                    <div class="row">
+                        <button class="btn waves-effect waves-light col s10 offset-s1" type="button" id="registerBtn">Registrar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        
+        <!-- Register Teacher PopUp -->
+        <div id="registerTeacherModal" class="modal registerModal">
+            <div class='modal-content'>
+                <div class="row center-align">
+                    <span class="flow-text">Por favor ingrese sus datos</span>
+                </div>
+
+
+                <form id="registerTeacherForm">
+                    <!-- Identificacion -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">account_circle</i>
+
+                            <input name="id" id="registerTeacherId" type="text" class="validate">
+
+                            <label for="registerTeacherId">Identificación</label>
+                        </div>
+                    </div>
+                    <!-- Nombre completo -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">face</i>
+                            <input name="name" id="registerName" type="text" class="validate">
+                            <label for="registerName">Nombre Completo</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Telefono completo -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">face</i>
+                            <input name="telefono" id="registerTeacherTelefono" type="text" class="validate">
+                            <label for="registerTeacherTelefono">Telefono Completo</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Email completo -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">face</i>
+                            <input name="email" id="registerTeacherEmail" type="text" class="validate">
+                            <label for="registerTeacherEmail">Email Completo</label>
+                        </div>
+                    </div>
+                    
+
+                    <div id="errorDivIdRegister" class="error-msg">
+                        <blockquote id="pErrorIdRegister"> </blockquote>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <i class="material-icons prefix">lock</i>
+                            <input name="password" id="registerTeacherPassword" type="password" class="validate">
+
+                            <label for="registerTeacherPassword">Contraseña</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Boton -->
+                    <div class="row">
+                        <button class="btn waves-effect waves-light col s10 offset-s1" type="button" id="registerBtn">Registrar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
         </div>
         
         <!-- Log In PopUp -->

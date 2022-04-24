@@ -80,7 +80,7 @@ public class Ent_Usuario_Factory {
     }
 
     private static Ent_Usuario createEnt_Usuario(Usuario u) {
-        Ent_Usuario eu = new Ent_Usuario(u.getId(), u.getClave(),u.getClave());
+        Ent_Usuario eu = new Ent_Usuario(u.getId(), u.getClave(),u.getRol());
         return eu;
     }
 }

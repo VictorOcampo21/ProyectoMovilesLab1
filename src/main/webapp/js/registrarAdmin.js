@@ -1,48 +1,96 @@
+var usuario = {id: "", password: "", role: "Cliente"};
+var cliente = {id: "", name: ""};
 var url="http://localhost:8080/ProyectoMovilesLab1/";
 
-    function register(){
-        if (!valRegister()) return;
-        usuario = {
-            id: $("#r_id").val(),
-            pass: $("#r_pass").val()
-        };       
-        console.log(usuario);
-        let request = new Request(url+'api/register', {method: 'POST', headers: { 'Content-Type': 'application/json'},body: JSON.stringify((usuario))});
-        (async ()=>{
-            const response = await fetch(request);
-            if (!response.ok) {errorMessage(response.status,$("#registerDialog #r_errorDiv"));return;}
-            $('#registerDialog').modal('hide');
-            document.location = url;
-            
-        })(); 
+function validarRegister() {
+    var error = false;
+    $("#registerAdminForm input").removeClass("invalid");
+    error |= $("#registerAdminForm input[type='text']").filter((i, e) => {
+        return e.value === '';
+    }).length > 0;
+    $("#registerAdminForm input[type='text']").filter((i, e) => {
+        return e.value === '';
+    }).addClass("invalid");
+    error |= $("#registerAdminForm input[type='password']").filter((i, e) => {
+        return e.value === '';
+    }).length > 0;
+    $("#registerAdminForm input[type='password']").filter((i, e) => {
+        return e.value === '';
+    }).addClass("invalid");
+    var x = $("#registerAdminId").val();
+    error |= isNaN(x);
+    if (isNaN(x)) {
+        $("#registerAdminId").addClass("invalid");
+        $("#registerAdminModal #errorDivIdRegister").show();
+        $("#pErrorIdRegister").text("Identificacion debe de ser numerica");
     }
 
-    function valRegister(){
-        $("#registerForm").addClass("was-validated");
-        return $("#registerForm").get(0).checkValidity(); 
-    }
-  function errorMessage(status,place){  
-        switch(status){
-            case 404: error= "Registro no encontrado"; break;
-            case 403: case 405: error="Usuario no autorizado"; break;
-            case 406: case 405: error="Usuario ya existe"; break;
-        };            
-        place.html('<div class="alert alert-danger fade show">' +
-        '<button type="button" class="close" data-dismiss="alert">' +
-        '&times;</button><h4 class="alert-heading">Error!</h4>'+error+'</div>');
-        return;        
-    }  
-  
-  function loadRegister(){
-        let request = new Request(url+'register.html', {method: 'GET'});
-        (async ()=>{
-            const response = await fetch(request);
-            if (!response.ok) {errorMessage(response.status,$("#registerDialog #r_errorDiv"));return;}
-            content = await response.text();
-            $('body').append(content); 
-            $("#register").click(register);                         
-        })();     
-  }
-  
-  $(loadRegister);  
+    return !error;
+}
+function loadRegister() {
+    usuario = {id: $("#registerAdminId").val(), password: $("#registerAdminPassword").val(), role: "Administrador"};
+}
 
+function resetRegister() {
+    usuario = {id: "", password: "", role: "Administrador"};
+    $("#registerAdminId").val("");
+    $("#registerAdminPassword").val("");
+}
+
+function addUser() {
+    loadRegister();
+    if (!validarRegister())
+        return;
+    let requestUser = new Request(url + 'api/registerAdmin', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(usuario)});
+    (async () => {
+        const responseUser = await fetch(requestUser);
+        if (!responseUser.ok) {
+            errorMessageRegister(responseUser.status, $("#registerAdminModal #errorDivIdRegister"));
+            return;
+        }
+        if (!responseClient.ok) {
+            console.log("Error");
+            return;
+        }
+
+        resetRegister();
+        document.location = url;
+    })();
+
+}
+
+function renderRegister() {
+    $("#registerAdminId").val(usuario.id);
+    $("#registerAdminPassword").val(usuario.password);
+    $('#registerBtn').on('click', addUser);
+
+}
+
+
+
+function errorMessageRegister(status, place) {
+    let error = "";
+    switch (status) {
+        case 404:
+            error = "Registro no encontrado";
+            break;
+        case 403:
+        case 405:
+            error = "Usuario no autorizado";
+            break;
+        case 406:
+        case 405:
+            error = "Usuario ya existe";
+            break;
+    }
+    ;
+    if (error === "" || error === null) {
+        $("#registerAdminModal #errorDivIdRegister").hide();
+    } else {
+        $("#registerAdminId").addClass("invalid");
+        $("#registerAdminModal #errorDivIdRegister").show();
+        $("#pErrorIdRegister").text(error);
+    }
+    return;
+}
+$(renderRegister);

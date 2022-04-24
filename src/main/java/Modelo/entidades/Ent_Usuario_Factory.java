@@ -75,12 +75,12 @@ public class Ent_Usuario_Factory {
     
     
     private static Usuario createUsuario(Ent_Usuario eu) throws SQLException, IOException {
-        Usuario u = new Usuario(eu.getId(),eu.getClave());
+        Usuario u = new Usuario(eu.getId(),eu.getClave(),eu.getRol());
         return u;
     }
 
     private static Ent_Usuario createEnt_Usuario(Usuario u) {
-        Ent_Usuario eu = new Ent_Usuario(u.getId(), u.getClave());
+        Ent_Usuario eu = new Ent_Usuario(u.getId(), u.getClave(),u.getClave());
         return eu;
     }
 }

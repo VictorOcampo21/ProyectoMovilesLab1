@@ -29,16 +29,16 @@ public class usuario_CRUD extends AbstractCRUD {
     }
 
     protected static final String LIST_CMD
-            = "SELECT id,clave FROM mydb.usuario "
+            = "SELECT id,clave,rol FROM mydb.usuario "
             + "ORDER BY id; ";
     protected static final String ADD_CMD
-            = "INSERT INTO mydb.usuario (id,clave) "
-            + "VALUES (?, ?); ";
+            = "INSERT INTO mydb.usuario (id,clave,rol) "
+            + "VALUES (?, ?, ?); ";
     protected static final String RETRIEVE_CMD
-            = "SELECT id,clave FROM mydb.usuario "
+            = "SELECT id,clave,rol FROM mydb.usuario "
             + "WHERE id = ? ; ";
     protected static final String UPDATE_CMD
-            = "UPDATE mydb.usuario clave = ? "
+            = "UPDATE mydb.usuario clave = ? , rol = ? "
             + "WHERE id = ?; ";
     protected static final String DELETE_CMD
             = "DELETE mydb.usuario "

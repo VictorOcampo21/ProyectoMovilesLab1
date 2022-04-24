@@ -18,7 +18,6 @@ public class Universidad {
     public Universidad() {
         usuarios = new HashMap<>();
         estudiantes = new HashMap<>();
-        usuarios.put("1", new Usuario("1","1", "Administrador"));
     }
 
     public Universidad(HashMap<String, Usuario> usuarios, HashMap<String, Estudiante> estudiantes) {

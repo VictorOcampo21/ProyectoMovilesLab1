@@ -7,21 +7,23 @@
 package Restfull;
 
 import Modelo.logica.Universidad;
-import javax.annotation.security.PermitAll;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.NotAcceptableException;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import modelo.logica.Estudiante;
+import modelo.logica.Profesor;
 import modelo.logica.Usuario;
 /**
  *
  * @author 
  */
-@Path("/register")
+@Path("/registerAdmin")
 public class Register {
   @Context
     HttpServletRequest request;
@@ -41,8 +43,8 @@ public class Register {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/student")
-    public void addStudent(Estudainte e) {
+    @Path("/registerEstu")
+    public void addStudent(Estudiante e) {
         try {
 // No se como se llaman los metetodos del factory de estudiante pero la logica seria así
             /*if (Ent_Estudiante_Factory.estudianteExiste(e.getId())) {
@@ -57,7 +59,7 @@ public class Register {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/profesor")
+    @Path("/registerProfesor")
     public void addProfesor(Profesor e) {
         try {
 // No se como se llaman los metetodos del factory de profesor pero la logica seria así, creo jajaja

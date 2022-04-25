@@ -14,6 +14,13 @@ public class Carrera {
         this.listCursos = listCursos;
     }
 
+    public Carrera(String id, String nombre, String titulo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.titulo = titulo;
+        this.listCursos = new ArrayList<Curso>();
+    }
+
     public String getId() {
         return id;
     }

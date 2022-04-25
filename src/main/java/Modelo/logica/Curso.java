@@ -19,6 +19,15 @@ public class Curso {
     public Curso() {
     }
 
+    public Curso(String id, String nombre, int credito, boolean estado, int horas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.credito = credito;
+        this.estado = estado;
+        this.horas = horas;
+        this.listGrup = new ArrayList<Grupo>();
+    }
+
     public Curso(String id, String nombre, int credito, boolean estado, int horas, ArrayList<Grupo> listGrup) {
         this.id = id;
         this.nombre = nombre;

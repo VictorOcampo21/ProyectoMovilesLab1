@@ -27,6 +27,16 @@ public class Grupo {
         this.listHorario = listHorario;
     }
 
+    public Grupo(String nrc, String idProfe, int numGrup, String curso, String nomCiclo) {
+        this.nrc = nrc;
+        this.idProfe = idProfe;
+        this.numGrup = numGrup;
+        this.curso = curso;
+        this.nomCiclo = nomCiclo;
+        this.listEstu = new ArrayList<Estudiante>();
+        this.listHorario = new ArrayList<Horario>();
+    }
+
     public Grupo() {
     }
 
@@ -115,10 +125,10 @@ public class Grupo {
             listHorario.add(o);
         }
     }
-    
-    public Horario buscarHorario(String dia){
+
+    public Horario buscarHorario(String dia) {
         for (int i = 0; i < listHorario.size(); i++) {
-            if(listHorario.get(i).getDia().equals(dia)){
+            if (listHorario.get(i).getDia().equals(dia)) {
                 return listHorario.get(i);
             }
         }

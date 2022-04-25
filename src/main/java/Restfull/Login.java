@@ -1,7 +1,7 @@
 package Restfull;
 
 
-import Modelo.logica.Universidad;
+import Modelo.entidades.Ent_Usuario_Factory;
 import javax.annotation.security.PermitAll;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,7 +33,7 @@ public class Login {
 
             
             try {
-                Usuario logged = Universidad.getInstance().validarUsu(usuario.getId(), usuario.getClave());
+                Usuario logged = Ent_Usuario_Factory.datosCorrectosUsuario(usuario.getId(), usuario.getClave());
                 request.getSession(true).setAttribute("user", logged);
                 return logged;
             } catch (Exception ex) {

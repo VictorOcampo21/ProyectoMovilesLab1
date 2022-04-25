@@ -73,6 +73,21 @@ public class Ent_Usuario_Factory {
         return "nombre_incorrecto";
     }
     
+    public static Usuario datosCorrectosUsuario(String id, String pass) {
+        List<Usuario> r = listAll();
+
+        for (Usuario u : r) {
+            if (id.equals(u.getId())) {
+                if (pass.equals(u.getClave())) {
+                    return getUsuario(u.getId());
+                } else {
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+    
     
     private static Usuario createUsuario(Ent_Usuario eu) throws SQLException, IOException {
         Usuario u = new Usuario(eu.getId(),eu.getClave(),eu.getRol());

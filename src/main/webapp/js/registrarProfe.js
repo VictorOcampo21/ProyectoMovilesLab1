@@ -47,17 +47,11 @@ function addUser() {
     loadRegister();
     if (!validarRegister())
         return;
-    let requestUser = new Request(url + 'api/registerProfesor', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(usuario)});
-    let requestProfesor = new Request(url + 'api/register/estudiante', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(estudiante)});
+    let requestUser = new Request(url + 'api/registerProfesor', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(usuario, profesor)});
     (async () => {
         const responseUser = await fetch(requestUser);
-        const responseProfesor = await fetch(requestProfesor);
         if (!responseUser.ok) {
             errorMessageRegister(responseUser.status, $("#registerTeacherModal #errorDivIdRegister"));
-            return;
-        }
-        if (!responseProfesor.ok) {
-            console.log("Error");
             return;
         }
 

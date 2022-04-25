@@ -42,8 +42,7 @@ public class estudiante_DAO extends AbstractDAO<String, Modelo.entidades.Ent_Est
         stm.setString(4, value.getEmail());
         stm.setString(5, value.getUsu());
         stm.setString(6, value.getCumple());
-        stm.setString(7, value.getCarrera()
-        );
+        stm.setString(7, value.getCarrera());
 
     }
 

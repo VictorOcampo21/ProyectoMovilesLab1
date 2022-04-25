@@ -2,11 +2,6 @@ package modelo.logica;
 
 public class Horario {
 
-    private String inicia;
-    private String finaliza;
-    private String dia;
-    private String id;
-
     public String getInicia() {
         return inicia;
     }
@@ -31,15 +26,6 @@ public class Horario {
         this.dia = dia;
     }
 
-    public Horario() {
-    }
-
-    public Horario(String inicia, String finaliza, String dia) {
-        this.inicia = inicia;
-        this.finaliza = finaliza;
-        this.dia = dia;
-    }
-
     public String getId() {
         return id;
     }
@@ -47,5 +33,22 @@ public class Horario {
     public void setId(String id) {
         this.id = id;
     }
+
+    private String inicia;
+    private String finaliza;
+    private String dia;
+    private String id;
+
+    public Horario() {
+    }
+
+    public Horario(String inicia, String finaliza, String dia, String id) {
+        this.inicia = inicia;
+        this.finaliza = finaliza;
+        this.dia = dia;
+        this.id = id;
+    }
+
+
 
 }

@@ -19,6 +19,10 @@ public class Universidad {
         usuarios = new HashMap<>();
         estudiantes = new HashMap<>();
     }
+    
+    public final void actualizarModelo() throws Exception {
+        //Universidad.getInstance().setAdmins(AdministratorDAO.getInstance().listAll());
+    }
 
     public Universidad(HashMap<String, Usuario> usuarios, HashMap<String, Estudiante> estudiantes) {
         this.usuarios = usuarios;

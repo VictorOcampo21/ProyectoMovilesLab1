@@ -28,7 +28,7 @@ public class usuario_CRUD extends AbstractCRUD {
         return DELETE_CMD;
     }
 
-    protected static final String LIST_CMD
+    public static final String LIST_CMD
             = "SELECT id,clave,rol FROM mydb.usuario "
             + "ORDER BY id; ";
     protected static final String ADD_CMD

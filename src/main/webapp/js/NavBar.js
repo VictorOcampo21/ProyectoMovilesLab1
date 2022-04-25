@@ -8,13 +8,13 @@ function userLog() {
         $("#navAccount").on('click', function () {
             switch (usuarioJson.role) {
                 case 'Administrador':
-                    document.location = url + 'view/Admin.html';
+                    document.location = url + 'vista/Admin.html';
                     break;
                 case 'Estudiante':
-                    document.location = url + 'view/Estudiante.html';
+                    document.location = url + 'vista/Estudiante.html';
                     break;
                 case 'Profesor':
-                    document.location = url + 'view/Profesor.html';
+                    document.location = url + 'vista/Profesor.html';
                     break;
             }
         });
